@@ -70,6 +70,10 @@
 #include "base/nix/xdg_util.h"
 #endif
 
+#if defined(OS_SWITCH)
+#include <switch.h>
+#endif
+
 namespace {
 
 const char* const kNonWildcardDomainNonPortSchemes[] = {
@@ -190,7 +194,7 @@ void OverridePepperFlashSystemPluginPath() {
   }
 }
 
-#if defined(OS_LINUX)
+#if defined(OS_LINUX) || defined(OS_SWITCH)
 
 // Based on chrome/common/chrome_paths_linux.cc.
 // See http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
@@ -614,7 +618,7 @@ void CefMainDelegate::ProcessExiting(const std::string& process_type) {
   ui::ResourceBundle::CleanupSharedInstance();
 }
 
-#if defined(OS_LINUX)
+#if defined(OS_LINUX) || defined(OS_SWITCH)
 void CefMainDelegate::ZygoteForked() {
   base::CommandLine* command_line = base::CommandLine::ForCurrentProcess();
   const std::string& process_type =

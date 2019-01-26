@@ -457,7 +457,7 @@ void CefWidevineLoader::OnContextInitialized() {
   }
 }
 
-#if defined(OS_LINUX)
+#if defined(OS_LINUX) || defined(OS_SWITCH)
 
 // static
 void CefWidevineLoader::AddContentDecryptionModules(

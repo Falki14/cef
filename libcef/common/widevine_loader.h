@@ -40,7 +40,7 @@ class CefWidevineLoader {
   // before context creation.
   void OnContextInitialized();
 
-#if defined(OS_LINUX)
+#if defined(OS_LINUX) || defined(OS_SWITCH)
   // The zygote process which is used when the sandbox is enabled on Linux
   // requires early loading of CDM modules. Other processes will receive
   // load notification in the usual way.

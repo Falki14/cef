@@ -41,7 +41,7 @@ class CefMainDelegate : public content::ContentMainDelegate {
       const std::string& process_type,
       const content::MainFunctionParams& main_function_params) override;
   void ProcessExiting(const std::string& process_type) override;
-#if defined(OS_LINUX)
+#if defined(OS_LINUX) || defined(OS_SWITCH)
   void ZygoteForked() override;
 #endif
   content::ContentBrowserClient* CreateContentBrowserClient() override;

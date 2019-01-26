@@ -411,6 +411,8 @@ std::string GetOSType() {
   return "OpenBSD";
 #elif defined(OS_SOLARIS)
   return "Solaris";
+#elif defined(OS_SWITCH)
+  return "Nintendo Switch";
 #else
   return "Unknown";
 #endif

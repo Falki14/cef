@@ -56,6 +56,12 @@
 #include "libcef/browser/printing/print_dialog_linux.h"
 #endif
 
+#if defined(OS_SWITCH)
+#include <switch.h>
+#include "ui/base/ime/input_method_initializer.h"
+#include "libcef/browser/printing/print_dialog_linux.h"
+#endif
+
 CefBrowserMainParts::CefBrowserMainParts(
     const content::MainFunctionParams& parameters)
     : BrowserMainParts(), devtools_delegate_(NULL) {}
@@ -112,7 +118,7 @@ void CefBrowserMainParts::PreMainMessageLoopStart() {
 }
 
 void CefBrowserMainParts::PostMainMessageLoopStart() {
-#if defined(OS_LINUX)
+#if defined(OS_LINUX) || defined(OS_SWITCH)
   printing::PrintingContextLinux::SetCreatePrintDialogFunction(
       &CefPrintDialogLinux::CreatePrintDialog);
   printing::PrintingContextLinux::SetPdfPaperSizeFunction(

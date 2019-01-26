@@ -18,6 +18,10 @@
 #include "ui/gfx/x/x11_types.h"
 #endif
 
+#if defined(OS_SWITCH)
+#include <switch.h>
+#endif
+
 #if defined(OS_WIN)
 #include "ui/display/screen.h"
 #include "ui/views/win/hwnd_util.h"
@@ -294,7 +298,7 @@ void CefWindowView::CreateWidget() {
     DCHECK(widget->widget_delegate()->CanActivate());
   }
 
-#if defined(OS_LINUX)
+#if defined(OS_LINUX) || defined(OS_SWITCH)
   if (is_frameless_) {
     ::Window window = view_util::GetWindowHandle(widget);
     DCHECK(window);

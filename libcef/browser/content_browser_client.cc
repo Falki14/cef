@@ -99,6 +99,10 @@
 #include "ui/base/ui_base_switches.h"
 #include "url/gurl.h"
 
+#if defined(OS_SWITCH)
+#include <switch.h>
+#endif
+
 #if defined(OS_LINUX)
 #include "libcef/common/widevine_loader.h"
 #endif

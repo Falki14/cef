@@ -20,7 +20,7 @@
 #include "ui/aura/test/ui_controls_factory_aura.h"
 #include "ui/aura/window.h"
 #include "ui/base/test/ui_controls_aura.h"
-#if defined(OS_LINUX)
+#if defined(OS_LINUX) || defined(OS_SWITCH)
 #include "ui/views/test/ui_controls_factory_desktop_aurax11.h"
 #endif
 #endif
@@ -38,7 +38,7 @@ void InitializeUITesting() {
     ui_controls::EnableUIControls();
 
 #if defined(USE_AURA)
-#if defined(OS_LINUX)
+#if defined(OS_LINUX) || defined(OS_SWITCH)
     ui_controls::InstallUIControlsAura(
         views::test::CreateUIControlsDesktopAura());
 #else

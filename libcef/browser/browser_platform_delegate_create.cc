@@ -19,7 +19,7 @@
 #elif defined(OS_MACOSX)
 #include "libcef/browser/native/browser_platform_delegate_native_mac.h"
 #include "libcef/browser/osr/browser_platform_delegate_osr_mac.h"
-#elif defined(OS_LINUX)
+#elif defined(OS_LINUX) || defined(OS_SWITCH)
 #include "libcef/browser/native/browser_platform_delegate_native_linux.h"
 #include "libcef/browser/osr/browser_platform_delegate_osr_linux.h"
 #else
@@ -28,6 +28,10 @@
 
 #if defined(USE_AURA)
 #include "libcef/browser/views/browser_platform_delegate_views.h"
+#endif
+
+#if defined(OS_SWITCH)
+#include <switch.h>
 #endif
 
 namespace {
@@ -44,7 +48,7 @@ std::unique_ptr<CefBrowserPlatformDelegateNative> CreateNativeDelegate(
 #elif defined(OS_MACOSX)
   return std::make_unique<CefBrowserPlatformDelegateNativeMac>(
       window_info, background_color);
-#elif defined(OS_LINUX)
+#elif defined(OS_LINUX) || defined(OS_SWITCH)
   return std::make_unique<CefBrowserPlatformDelegateNativeLinux>(
       window_info, background_color);
 #endif
@@ -58,7 +62,7 @@ std::unique_ptr<CefBrowserPlatformDelegateOsr> CreateOSRDelegate(
 #elif defined(OS_MACOSX)
   return std::make_unique<CefBrowserPlatformDelegateOsrMac>(
       std::move(native_delegate));
-#elif defined(OS_LINUX)
+#elif defined(OS_LINUX) || defined(OS_SWITCH)
   return std::make_unique<CefBrowserPlatformDelegateOsrLinux>(
       std::move(native_delegate));
 #endif
