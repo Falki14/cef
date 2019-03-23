@@ -51,13 +51,17 @@
 #ifndef OS_LINUX
 #define OS_LINUX 1
 #endif
+#elif defined(__switch__)
+#ifndef OS_SWITCH
+#define OS_SWITCH 1
+#endif
 #else
 #error Please add support for your platform in cef_build.h
 #endif
 
 // For access to standard POSIXish features, use OS_POSIX instead of a
 // more specific macro.
-#if defined(OS_MACOSX) || defined(OS_LINUX)
+#if defined(OS_MACOSX) || defined(OS_LINUX) || defined(OS_SWITCH)
 #ifndef OS_POSIX
 #define OS_POSIX 1
 #endif

@@ -981,6 +981,8 @@ elif sys.platform == 'darwin':
   platform = 'macosx'
 elif sys.platform.startswith('linux'):
   platform = 'linux'
+elif sys.platform == 'switch':
+  platform = 'switch'
 else:
   print 'Unknown operating system platform'
   sys.exit()
